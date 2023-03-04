@@ -19,7 +19,7 @@ export class AppController {
     @MessagePattern(MicrounoMessagesEnum.Transaccion)
     async create(@Payload() data: any) {
         console.log(data);
-        // throw new BadRequestException('EL AMOR');
-        return {mensaje: 'ok'};
+        throw new BadRequestException('EL AMOR');
+        // return {mensaje: 'ok'};
     }
 }

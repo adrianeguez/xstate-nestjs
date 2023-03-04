@@ -21,6 +21,20 @@ export class AppController {
     toggle(): any {
         return this.appService.a;
     }
+
+    @Get('ejemploMaquina/:numero')
+    ejemploMaquina(
+        @Param('numero') numero: string
+    ): any {
+        return this.appService.empezarMaquinaEjemplo(+numero);
+    }
+
+    @Get('ejemploMaquina/cargar/:estadoPrevio')
+    empezarMaquinaEnAlgunPunto(
+        @Param('estadoPrevio') estadoPrevio: string
+    ): any {
+        return this.appService.empezarMaquinaEnAlgunPunto(estadoPrevio);
+    }
     @Get('toggle/:event')
     toggleEvent(
         @Param('event') event: string
