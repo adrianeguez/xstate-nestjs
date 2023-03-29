@@ -3,18 +3,24 @@ import {AppService} from './app.service';
 import {firstValueFrom} from "rxjs";
 import {MicrounoMessagesEnum} from "./enums/microuno-messages.enum";
 import {ProxyService} from "./proxy-module/proxy.service";
+import {UsuarioService} from "./modulo-contabilidad/usuario/usuario.service";
 
 @Controller()
 export class AppController {
     constructor(
         private readonly appService: AppService,
         private readonly proxyService: ProxyService,
+        private readonly usuarioService: UsuarioService
     ) {
     }
     private _clientProxyUMicroUno = this.proxyService.clientProxyMicroUno();
     @Get()
     getHello(): string {
         return this.appService.getHello();
+    }
+    @Get('modulo-contabilidad')
+    getUsers() {
+        return this.usuarioService.getUser();
     }
 
     @Get('toggle')
