@@ -1,9 +1,9 @@
 import { EntityManager } from 'typeorm';
 
-export interface ContextoAbstrac {
+export interface ContextoAbstract<T = any> {
   delay: number;
   numeroRetries: number;
   error?: number;
   mensajeError?: string;
-  entityManager: EntityManager;
+  respuestaEstado?: T;
 }

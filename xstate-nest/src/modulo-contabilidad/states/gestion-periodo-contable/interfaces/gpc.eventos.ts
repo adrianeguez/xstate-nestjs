@@ -1,1 +1,1 @@
-export type GpcEventos = { type: 'empezar_validacion_anio_repetido' };
+export type GpcEventos = { type: 'EMPEZAR' };
