@@ -1,3 +1,3 @@
 export enum MicrounoMessagesEnum {
-    Transaccion = 'TRANSACCION_UNO'
+  Transaccion = 'TRANSACCION_UNO',
 }

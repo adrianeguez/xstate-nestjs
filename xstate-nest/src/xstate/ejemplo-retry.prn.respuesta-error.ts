@@ -1,10 +1,10 @@
-import {EventObject} from "xstate/lib/types";
+import { EventObject } from 'xstate/lib/types';
 
 export type EjemploRetryPrnRespuestaError = EventObject & {
-    data: EjemploRetryPrnError
-}
+  data: EjemploRetryPrnError;
+};
 export type EjemploRetryPrnError = {
-    error: number;
-    mensaje: string;
-    numeroRetries: number;
-}
+  error: number;
+  mensaje: string;
+  numeroRetries: number;
+};

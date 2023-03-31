@@ -1,2 +1,1 @@
-export type EjemploRetryEventos =
-    | { type: 'REVISAR_SI_ES_PAR'; }
+export type EjemploRetryEventos = { type: 'REVISAR_SI_ES_PAR' };

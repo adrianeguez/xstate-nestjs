@@ -1,3 +1,3 @@
 export enum RabbitmqQueuesEnum {
-    MicroUno = 'microuno'
+  MicroUno = 'microuno',
 }

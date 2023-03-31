@@ -1,5 +1,5 @@
-import * as process from "process";
+import * as process from 'process';
 
 export const CONFIG = {
-    AMQP_URL: process.env.AMQP_URL,
+  AMQP_URL: process.env.AMQP_URL,
 };
