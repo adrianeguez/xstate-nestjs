@@ -26,6 +26,7 @@ import {
 import { ResGpcA, ResGpcAEstado } from './respuestas/gpc-a.respuesta-estado';
 import { RespuestaEstado } from '../../../abstract/interfaces/respuesta-estado';
 import { AbstractServicioState } from '../../../abstract/abstract.servicio.state';
+import { GpcParametros } from './interfaces/gpc.parametros';
 
 @Injectable()
 export class GestionPeriodoContableState extends AbstractServicioState {
@@ -38,19 +39,19 @@ export class GestionPeriodoContableState extends AbstractServicioState {
 
   tiempoDelay = 1000;
 
-  async iniciar(): Promise<RespuestaEstado<ResGpcA>> {
+  async iniciar(parametros: GpcParametros): Promise<RespuestaEstado<ResGpcA>> {
     return this.configurarEIniciarFlujo<GpcContexto>({
-      generarInstancia: this.instanciaGestionPeriodoState,
+      generarInstancia: this.instanciaGestionPeriodoState025026001,
       contextoInicial: {
-        anio: 2022,
-        periodoContableId: 1,
+        anio: parametros.anio,
+        periodoContableId: parametros.periodoContableId,
         delay: 0,
         numeroRetries: 0,
       },
     });
   }
 
-  instanciaGestionPeriodoState = (
+  instanciaGestionPeriodoState025026001 = (
     contexto: GpcContexto<ResGpcA>,
     entityManager: EntityManager,
   ) => {
