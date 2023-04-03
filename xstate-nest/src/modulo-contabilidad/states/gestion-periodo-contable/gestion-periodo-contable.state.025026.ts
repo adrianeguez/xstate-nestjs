@@ -8,9 +8,9 @@ import { GestionPeriodoContableTipoEstado001 } from './001/interfaces/gestion-pe
 import { UsuarioEntity } from '../../usuario/usuario.entity';
 import { ResErrorAbstract } from '../../../abstract/res-error.abstract';
 import {
-  GestionPeriodoContableREstado001001,
-  TGestionPeriodoContableREstado001001,
-} from './001/respuestas/gestion-periodo-contable.r-estado.001001';
+  GestionPeriodoContableRFlujo001001,
+  TGestionPeriodoContableRFlujo001001,
+} from './001/respuestas/gestion-periodo-contable.r-flujo.001001';
 import { RespuestaEstado } from '../../../abstract/interfaces/respuesta-estado';
 import { AbstractServicioState } from '../../../abstract/abstract.servicio.state';
 import { GestionPeriodoContableParametros001 } from './001/interfaces/gestion-periodo-contable.parametros.001';
@@ -37,10 +37,10 @@ export class GestionPeriodoContableState025026 extends AbstractServicioState {
   }
   async iniciar025026001(
     parametros: GestionPeriodoContableParametros001,
-  ): Promise<RespuestaEstado<GestionPeriodoContableREstado001001>> {
+  ): Promise<RespuestaEstado<GestionPeriodoContableRFlujo001001>> {
     return this.configurarEIniciarFlujo<
       GestionPeriodoContableContexto001,
-      GestionPeriodoContableREstado001001
+      GestionPeriodoContableRFlujo001001
     >({
       generarInstancia: this.instanciaGestionPeriodoContableState025026001,
       contextoInicial: {
@@ -53,7 +53,7 @@ export class GestionPeriodoContableState025026 extends AbstractServicioState {
   }
 
   instanciaGestionPeriodoContableState025026001 = (
-    contexto: GestionPeriodoContableContexto001<GestionPeriodoContableREstado001001>,
+    contexto: GestionPeriodoContableContexto001<GestionPeriodoContableRFlujo001001>,
     entityManager: EntityManager,
   ) => {
     try {
@@ -282,7 +282,7 @@ export class GestionPeriodoContableState025026 extends AbstractServicioState {
             invoke: {
               id: 'DeshabilitarPeriodoContableAnteriorYActivarNuevoPeriodoContable', //Promesa Revision Numero
               src: (context, event) => {
-                return new Promise<TGestionPeriodoContableREstado001001>(
+                return new Promise<TGestionPeriodoContableRFlujo001001>(
                   async (res, rej) => {
                     const respuesta = await entityManager
                       .getRepository(UsuarioEntity)
@@ -298,8 +298,8 @@ export class GestionPeriodoContableState025026 extends AbstractServicioState {
               onDone: {
                 target: 'resueltoCorrectamente',
                 actions: assign<
-                  GestionPeriodoContableContexto001<TGestionPeriodoContableREstado001001>,
-                  GestionPeriodoContableREstado001001
+                  GestionPeriodoContableContexto001<TGestionPeriodoContableRFlujo001001>,
+                  GestionPeriodoContableRFlujo001001
                 >({
                   respuestaEstado: (context, event) => event.data,
                 }),
