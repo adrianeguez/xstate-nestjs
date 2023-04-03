@@ -4,12 +4,12 @@ import {
   InternalServerErrorException,
   Query,
 } from '@nestjs/common';
-import { GestionPeriodoContableState } from '../states/gestion-periodo-contable/gestion-periodo-contable.state';
+import { GestionPeriodoContableState025026 } from '../states/gestion-periodo-contable/gestion-periodo-contable.state.025026';
 
 @Controller('usuario')
 export class UsuarioController {
   constructor(
-    private readonly _gestionPeriodoContableState: GestionPeriodoContableState,
+    private readonly _gestionPeriodoContableState: GestionPeriodoContableState025026,
   ) {}
 
   @Get('ejecutar')
@@ -21,6 +21,6 @@ export class UsuarioController {
       anio: +(anio || 2022),
       periodoContableId: +(periodoContableId || 1),
     };
-    return await this._gestionPeriodoContableState.iniciar(parametros);
+    return await this._gestionPeriodoContableState.iniciar025026001(parametros);
   }
 }

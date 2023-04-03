@@ -1,7 +1,6 @@
 import { interpret, StateMachine } from 'xstate';
 import { RespuestaEstado } from './interfaces/respuesta-estado';
-import { ResGpcA } from '../modulo-contabilidad/states/gestion-periodo-contable/respuestas/gpc-a.respuesta-estado';
-import { GpcContexto } from '../modulo-contabilidad/states/gestion-periodo-contable/interfaces/gpc.contexto';
+import { GestionPeriodoContableContexto001 } from '../modulo-contabilidad/states/gestion-periodo-contable/001/interfaces/gestion-periodo-contable.contexto.001';
 import {
   BadRequestException,
   InternalServerErrorException,
@@ -9,16 +8,20 @@ import {
 import { DataSource, EntityManager } from 'typeorm';
 
 export class AbstractServicioState {
+  tiempoDelay = 1000;
+
+  numeroRetries = 0;
+
   constructor(private readonly _datasource: DataSource) {}
 
-  async configurarEIniciarFlujo<Contexto = any>(objeto: {
+  async configurarEIniciarFlujo<Contexto = any, Respuesta = any>(objeto: {
     generarInstancia: (
       contexto: Contexto,
       entityManager: EntityManager,
     ) => StateMachine<Contexto, any, any, any>;
     contextoInicial: Contexto;
-  }): Promise<RespuestaEstado<ResGpcA>> {
-    const respuesta: RespuestaEstado<ResGpcA> = {
+  }): Promise<RespuestaEstado<Respuesta>> {
+    const respuesta: RespuestaEstado<Respuesta> = {
       mensaje: 'Estado gestion periodo contable finalizado con exito',
     };
     try {
@@ -29,7 +32,7 @@ export class AbstractServicioState {
             transactionalEntityManager,
           );
           const respuestaInterprete = await this.iniciarEstadoInterpretado<
-            GpcContexto<ResGpcA>
+            GestionPeriodoContableContexto001<Respuesta>
           >(instancia);
           if (respuestaInterprete.error) {
             respuesta.error = respuestaInterprete.error;

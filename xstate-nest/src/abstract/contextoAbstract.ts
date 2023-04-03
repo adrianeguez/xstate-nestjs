@@ -1,5 +1,3 @@
-import { EntityManager } from 'typeorm';
-
 export interface ContextoAbstract<T = any> {
   delay: number;
   numeroRetries: number;

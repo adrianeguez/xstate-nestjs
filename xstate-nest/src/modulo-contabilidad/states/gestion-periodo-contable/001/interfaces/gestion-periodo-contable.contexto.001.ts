@@ -1,6 +1,6 @@
-import { ContextoAbstract } from '../../../../abstract/contextoAbstract';
+import { ContextoAbstract } from '../../../../../abstract/contextoAbstract';
 
-export interface GpcContexto<RespuestaEstado = any>
+export interface GestionPeriodoContableContexto001<RespuestaEstado = any>
   extends ContextoAbstract<RespuestaEstado> {
   anio: number;
   periodoContableId: number;

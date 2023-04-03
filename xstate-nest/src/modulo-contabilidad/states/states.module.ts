@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { GestionPeriodoContableState } from './gestion-periodo-contable/gestion-periodo-contable.state';
+import { GestionPeriodoContableState025026 } from './gestion-periodo-contable/gestion-periodo-contable.state.025026';
 
 @Module({
   imports: [],
-  providers: [GestionPeriodoContableState],
-  exports: [GestionPeriodoContableState],
+  providers: [GestionPeriodoContableState025026],
+  exports: [GestionPeriodoContableState025026],
 })
 export class StatesModule {}

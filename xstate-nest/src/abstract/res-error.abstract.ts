@@ -6,4 +6,5 @@ export type ResErrorAbstract = EventObject & {
 export interface IResErrorAbstract {
   error: number;
   mensajeError: string;
+  data?: any;
 }
